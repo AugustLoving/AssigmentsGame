@@ -28,6 +28,7 @@ button0.addEventListener("click", function() {
   getRandomNumberOneToSixForComputer();
   showEvaluation();
   showScores();
+  changePlayerScoreColorWinning()
 });
 
 
@@ -44,18 +45,27 @@ function getRandomNumberOneToSixForComputer(){
 function evaluate(num1, num2){
   if (num1 > num2) {
     playerScore++;
-    return "YOU WIN😁😁😁!"
+    return "RESULT: YOU WIN😁😁😁!"
   }
   else if (num1 < num2) {
     computerScore++;
-      return "YOU LOSE😢😢😢!"
+      return " RESULT: YOU LOSE😢😢😢!"
     }
   else{
     drawScore++
-    return "DRAW!"
+    return " RESULT: DRAW!"
   }
 }
 
+// Color green if player is leading in score
+function changePlayerScoreColorWinning() {
+  if (playerScore > computerScore) {
+    playerScoreText.style.color = "green";
+  }
+  else {
+    playerScoreText.style.color = "black";
+  }
+}
 
 
 // Views
@@ -75,4 +85,3 @@ function showScores(){
   computerScoreText.innerHTML = "Computer score: " + computerScore;
   drawScoreText.innerHTML = "Draw score: " + drawScore;
 }
-
