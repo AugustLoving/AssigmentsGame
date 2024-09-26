@@ -1,10 +1,8 @@
 // Variables
 let result = document.getElementById("result");
 
-
 // Buttons
 let button0 = document.getElementById("button0");
-
 
 // Texts
 let playerRollText = document.getElementById("playerRollText");
@@ -14,7 +12,6 @@ let computerScoreText = document.getElementById("computerScoreText");
 let drawScoreText = document.getElementById("drawScoreText");
 let playerHistoryText = document.getElementById("playerHistory");
 let computerHistoryText = document.getElementById("computerHistory");
-
 
 // Data
 let playerRoll = 0;
@@ -41,7 +38,6 @@ button0.addEventListener("click", function() {
   showHistory()
   saveGame()
 });
-
 
 // Controllers
 function getRandomNumberOneToSixForPlayer(){
@@ -78,12 +74,10 @@ function saveGame(){
   document.cookie = "playerScore=" + playerScore + ";expires=Thu, 18 Dec 2025 12:00:00 UTC";
   document.cookie = "computerScore=" + computerScore + ";expires=Thu, 18 Dec 2025 12:00:00 UTC";
 }
-
 function loadGame(){
   playerScore = getCookie("playerScore");
   computerScore = getCookie("computerScore");
 }
-
 function getCookie(cname) {
   let name = cname + "=";
   let decodedCookie = decodeURIComponent(document.cookie);
