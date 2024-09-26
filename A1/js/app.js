@@ -12,6 +12,8 @@ let computerRollText = document.getElementById("computerRollText");
 let playerScoreText = document.getElementById("playerScoreText");
 let computerScoreText = document.getElementById("computerScoreText");
 let drawScoreText = document.getElementById("drawScoreText");
+let playerHistoryText = document.getElementById("playerHistory");
+let computerHistoryText = document.getElementById("computerHistory");
 
 
 // Data
@@ -22,12 +24,19 @@ let computerScore = 0;
 let drawScore = 0;
 
 
+// Arrays
+let playerScoreHistory = [];
+let computerScoreHistory = [];
+
+
 // Processes
 button0.addEventListener("click", function() {
  getRandomNumberOneToSixForPlayer();
   getRandomNumberOneToSixForComputer();
   showEvaluation();
   showScores();
+  changePlayerScoreColorWinning()
+  showHistory()
 });
 
 
@@ -44,18 +53,33 @@ function getRandomNumberOneToSixForComputer(){
 function evaluate(num1, num2){
   if (num1 > num2) {
     playerScore++;
-    return "YOU WIN😁😁😁!"
+    playerScoreHistory.push(1);
+    computerScoreHistory.push(0);
+    return "RESULT: YOU WIN😁😁😁!"
   }
   else if (num1 < num2) {
     computerScore++;
-      return "YOU LOSE😢😢😢!"
+    playerScoreHistory.push(0);
+    computerScoreHistory.push(1);
+      return " RESULT: YOU LOSE😢😢😢!"
     }
   else{
     drawScore++
-    return "DRAW!"
+    playerScoreHistory.push(0);
+    computerScoreHistory.push(0);
+    return " RESULT: DRAW!"
   }
 }
 
+// Color green if player is leading in score
+function changePlayerScoreColorWinning() {
+  if (playerScore > computerScore) {
+    playerScoreText.style.color = "green";
+  }
+  else {
+    playerScoreText.style.color = "black";
+  }
+}
 
 
 // Views
@@ -76,3 +100,7 @@ function showScores(){
   drawScoreText.innerHTML = "Draw score: " + drawScore;
 }
 
+function showHistory(){
+  playerHistoryText.innerHTML = "Player History: " + playerScoreHistory;
+  computerHistoryText.innerHTML = " Computer History: " + computerScoreHistory;
+}

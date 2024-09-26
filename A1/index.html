@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title></title>
+  <title> DICE GAME </title>
   <link rel="stylesheet" href="css/style.css">
   <meta name="description" content="">
 
@@ -20,21 +20,43 @@
 
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#fafafa">
+
+  <style>
+    body {
+      margin: 25px;
+      height: 100vh;
+      font-size: 20px;
+      background-image: url('img/twoDice.jpg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: unset;
+    }
+    #button0 {
+      width: 150px;
+      height: 85px;
+      font-size: 25px;
+      cursor: pointer;
+    }
+  </style>
+
+
 </head>
 
 <body>
+<h1>Dice Game vs Computer</h1>
 
-<button id="button0"> ROLL DICE! </button>
-<p id="playerRollText"> Click button to roll</p>
+<button id="button0"> ROLL THE DICE! </button>
+<p id="playerRollText"> </p>
 <p id = "computerRollText"> </p>
 <p id = "result"> </p>
-<p id = "playerScoreText"> playerScore: </p>
-<p id = "computerScoreText"> computerScore: </p>
+<p id = "playerScoreText"> Player score: </p>
+<p id = "computerScoreText"> Computer score: </p>
 <p id = "drawScoreText"> Draws: </p>
+<p id = "playerHistory"> </p>
+<p id = "computerHistory"> </p>
 
 
 <script src="js/app.js"></script>
-
 
 </body>
 
