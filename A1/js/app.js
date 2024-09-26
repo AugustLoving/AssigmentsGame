@@ -29,14 +29,16 @@ let playerScoreHistory = [];
 let computerScoreHistory = [];
 
 
+loadGame();
 // Processes
 button0.addEventListener("click", function() {
- getRandomNumberOneToSixForPlayer();
+  getRandomNumberOneToSixForPlayer();
   getRandomNumberOneToSixForComputer();
   showEvaluation();
   showScores();
   changePlayerScoreColorWinning()
   showHistory()
+  saveGame()
 });
 
 
@@ -71,6 +73,38 @@ function evaluate(num1, num2){
   }
 }
 
+// cookies
+function saveGame(){
+  // cookie
+  document.cookie = "playerScore=" + playerScore + ";expires=Thu, 18 Dec 2025 12:00:00 UTC";
+  document.cookie = "computerScore=" + computerScore + ";expires=Thu, 18 Dec 2025 12:00:00 UTC";
+}
+
+function loadGame(){
+  playerScore = getCookie("playerScore");
+  computerScore = getCookie("computerScore");
+  showScores();
+}
+
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) === ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) === 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return 0;
+}
+
+
+
+
 // Color green if player is leading in score
 function changePlayerScoreColorWinning() {
   if (playerScore > computerScore) {
@@ -101,6 +135,6 @@ function showScores(){
 }
 
 function showHistory(){
-  playerHistoryText.innerHTML = "Player History: " + playerScoreHistory;
-  computerHistoryText.innerHTML = " Computer History: " + computerScoreHistory;
+  playerHistoryText.innerHTML = "Player History: " + playerScoreHistory.join(", ");
+  computerHistoryText.innerHTML = " Computer History: " + computerScoreHistory.join(", ");
 }
